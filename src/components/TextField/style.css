@@ -1,0 +1,14 @@
+.error{
+    color: red;
+}
+.errorbox{
+    border: 1px solid red;
+}
+input[type="text"] {
+    display: block;
+    padding: 10px;
+    margin: 30px auto;
+}
+h2{
+    text-align: center;
+}
