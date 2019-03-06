@@ -1,3 +1,3 @@
-import React from 'react';
-import .TextField.jsx;
+import TextField from './TextField';
 
+export default TextField;
