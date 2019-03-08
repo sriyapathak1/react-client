@@ -1,39 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './style.css';
+import style from './style';
+
+const defaultProps = {
+  error: '',
+
+};
+
+const propTypes = {
+  error: PropTypes.string,
+  value: PropTypes.string.isRequired,
+};
 
 const TextField = (props) => {
-  let input = null;
-  const { value } = props;
+  const { error } = props;
 
-  switch (value) {
-  case 'valid':
-    input = <input type="text" placeholder="valid value" />;
-    break;
-  case 'invalid':
-    input = <input type="text" placeholder="disable" disabled="disabled" />;
-    break;
-  default:
-    input = (
-      <div className="error">
-        <input type="text" className="errorbox" placeholder="invalid value" />
-        <h2>error</h2>
-      </div>
-    );
-  }
+  // If error, apply styling
+  const errorStyle = error ? style.errorInput : {};
 
   return (
     <>
-      {' '}
-      {input}
+      <input style={{ ...style.base, ...errorStyle }} type="text" {...props} />
+      {
+        error && (
+          <div style={style.error}>{error}</div>
+        )
+      }
     </>
   );
 };
-TextField.defaultProps = {
-  value: ' ',
-};
-TextField.propTypes = {
-  value: PropTypes.string,
-};
+
+TextField.defaultProps = defaultProps;
+TextField.propTypes = propTypes;
 
 export default TextField;
